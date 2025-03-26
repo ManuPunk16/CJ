@@ -112,6 +112,50 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  isTransparenciaMobileOpen: boolean = false;
+  isDatosPersonalesMobileOpen: boolean = false;
+  isPaeMobileOpen: boolean = false;
+  isComiteEticaMobileOpen: boolean = false;
+
+  toggleTransparenciaMobile() {
+    this.isTransparenciaMobileOpen = !this.isTransparenciaMobileOpen;
+    if (!this.isTransparenciaMobileOpen) {
+      this.isDatosPersonalesMobileOpen = false;
+      this.isPaeMobileOpen = false;
+      this.cdr.detectChanges();
+    }
+    if (this.isTransparenciaMobileOpen) {
+      this.isComiteEticaMobileOpen = false;
+      this.cdr.detectChanges();
+    }
+  }
+
+  toggleDatosPersonalesMobile() {
+    this.isDatosPersonalesMobileOpen = !this.isDatosPersonalesMobileOpen;
+    if (this.isDatosPersonalesMobileOpen) {
+      this.isPaeMobileOpen = false;
+      this.cdr.detectChanges();
+    }
+  }
+
+  togglePaeMobile() {
+    this.isPaeMobileOpen = !this.isPaeMobileOpen;
+    if (this.isPaeMobileOpen) {
+      this.isDatosPersonalesMobileOpen = false;
+      this.cdr.detectChanges();
+    }
+  }
+
+  toggleComiteEticaMobile() {
+    this.isComiteEticaMobileOpen = !this.isComiteEticaMobileOpen;
+    if (this.isComiteEticaMobileOpen) {
+      this.isTransparenciaMobileOpen = false;
+      this.isDatosPersonalesMobileOpen = false;
+      this.isPaeMobileOpen = false;
+      this.cdr.detectChanges();
+    }
+  }
+
   @HostListener('document:click', ['$event'])
   clickout(event: any) {
     const target = event.target;

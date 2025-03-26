@@ -1,2 +1,40 @@
 <app-navbar></app-navbar>
 <router-outlet></router-outlet>
+
+<footer class="bg-[var(--accent-500)] text-white py-8">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="mb-6 md:mb-0">
+        <h3 class="text-lg font-semibold mb-4">Información de Contacto</h3>
+        <p>Dirección: Calle 10b Núm. 181 entre 45a y 45b, Barrio de Guadalupe, San Francisco de Campeche, Campeche C.P. 24010</p>
+        <p>Teléfono: 981 816 2280 y 981 816 2021</p>
+        <p>Email: consejeriajuridica&#64;campeche.gob.mx</p>
+        <a href="https://maps.app.goo.gl/mpEo6BU1JtKFyY1r9" target="_blank" rel="noopener noreferrer">
+          Ver en Google Maps
+        </a>
+      </div>
+
+      <div class="mb-6 md:mb-0">
+        <h3 class="text-lg font-semibold mb-4">Enlaces Rápidos</h3>
+        <ul class="space-y-2">
+          <li><a [routerLink]="['']" class="hover:text-gray-300">Inicio</a></li>
+          <li><a [routerLink]="['']" class="hover:text-gray-300">Quiénes Somos</a></li>
+          <li><a [routerLink]="['']" class="hover:text-gray-300">Obligaciones de Transparencia</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Redes Sociales</h3>
+        <div class="flex space-x-4">
+          <a href="#" class="hover:text-gray-300" aria-label="Facebook"><i class="fab fa-facebook-square text-2xl"></i></a>
+          <a href="#" class="hover:text-gray-300" aria-label="Twitter"><i class="fab fa-twitter-square text-2xl"></i></a>
+          <a href="#" class="hover:text-gray-300" aria-label="LinkedIn"><i class="fab fa-linkedin text-2xl"></i></a>
+          <a href="#" class="hover:text-gray-300" aria-label="Instagram"><i class="fab fa-instagram-square text-2xl"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 text-center border-t border-gray-700 pt-4">
+      <p>&copy; {{ currentYear }} Consejería Jurídica del Poder Ejecutivo del Estado de Campeche. Todos los derechos reservados. (Página no oficial)</p>
+    </div>
+  </div>
+</footer>

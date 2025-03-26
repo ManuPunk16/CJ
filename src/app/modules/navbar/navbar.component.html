@@ -58,7 +58,7 @@
         </div>
       </div>
 
-      <a href="#" class="text-gray-300 hover:text-white transition-colors duration-300 p-4">Contacto</a>
+      <!-- <a href="#" class="text-gray-300 hover:text-white transition-colors duration-300 p-4">Contacto</a> -->
     </div>
     <div class="md:hidden">
       <button id="menu-toggle" class="text-white focus:outline-none mr-[8px]">
@@ -69,37 +69,75 @@
     </div>
   </div>
   <div id="mobile-menu" class="md:hidden mt-2 overflow-hidden transition-all duration-200 ease-in-out"
-    [ngStyle]="{'maxHeight': isMenuHidden ? '0px' : '500px'}">
-    <div class="space-y-2 p-2">
-      <a href="#" class="block px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200">Inicio</a>
-      <a href="#" class="block px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200">Quienes
-        Somos</a>
+  [ngStyle]="{'maxHeight': isMenuHidden ? '0px' : '650px'}">
+  <div class="space-y-2 p-2">
+    <a href="#" class="block px-4 py-2 text-gray-200 hover:bg-[var(--primary-500)] hover:text-white transition-colors duration-200 rounded-md">Inicio</a>
+    <a href="#" class="block px-4 py-2 text-gray-200 hover:bg-[var(--primary-500)] hover:text-white transition-colors duration-200 rounded-md">Quienes Somos</a>
 
-      <div class="relative group">
-        <button
-          class="block px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200">Transparencia</button>
-        <div class="absolute hidden group-hover:block bg-[var(--primary-900)] rounded-md shadow-md mt-2 w-48">
-          <a href="#" class="block px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200">Sub-Opción 1
-            Transparencia</a>
-          <a href="#" class="block px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200">Sub-Opción 2
-            Transparencia</a>
-        </div>
+    <div class="relative group">
+      <button (click)="toggleTransparenciaMobile()"
+        class="flex items-center justify-between w-full px-4 py-2 text-gray-200 hover:bg-[var(--primary-500)] hover:text-white transition-colors duration-200 rounded-md">
+        Transparencia
+        <svg class="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+          aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+            clip-rule="evenodd" />
+        </svg>
+      </button>
+      <div *ngIf="isTransparenciaMobileOpen" class="bg-[var(--custom-white)] rounded-md shadow-md mt-2 w-full">
+        <ng-container *ngFor="let item of transparenciaItems">
+          <a *ngIf="!item.hasSubmenu" [routerLink]="[item.link]"
+            class="block px-4 py-2 text-gray-700 hover:bg-[var(--primary-100)] hover:text-[var(--custom-white)] transition-colors duration-200 rounded-md">
+            {{ item.label }}
+          </a>
+          <div *ngIf="item.hasSubmenu" class="relative group">
+            <button (click)="item.label === 'Datos Personales' ? toggleDatosPersonalesMobile() : togglePaeMobile()"
+              class="flex items-center justify-between w-full px-4 py-2 text-sm text-gray-700 hover:bg-[var(--primary-100)] hover:text-[var(--custom-white)] transition-colors duration-200 rounded-md"
+              aria-haspopup="true"
+              [attr.aria-expanded]="item.label === 'Datos Personales' ? isDatosPersonalesMobileOpen.toString() : isPaeMobileOpen.toString()">
+              {{ item.label }}
+              <svg class="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clip-rule="evenodd" />
+              </svg>
+            </button>
+            <div *ngIf="item.label === 'Datos Personales' ? isDatosPersonalesMobileOpen : isPaeMobileOpen"
+              class="bg-[var(--primary-500)] mt-2 w-full rounded-md">
+              <div class="py-1">
+                <a *ngFor="let subItem of item.submenuItems" [routerLink]="[subItem.link]"
+                  class="block px-4 py-2 text-gray-100 hover:bg-[var(--primary-100)] hover:text-[var(--custom-white)] transition-colors duration-200 rounded-md">
+                  {{ subItem.label }}
+                </a>
+              </div>
+            </div>
+          </div>
+        </ng-container>
       </div>
-
-      <div class="relative group">
-        <button (click)="toggleComiteEtica()"
-          class="block px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200">Comite de
-          Etica</button>
-        <div *ngIf="isComiteEticaOpen"
-          class="absolute hidden group-hover:block bg-[var(--primary-900)] rounded-md shadow-md mt-2 w-48">
-          <a href="#" class="block px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200">Sub-Opción 1
-            Ética</a>
-          <a href="#" class="block px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200">Sub-Opción 2
-            Ética</a>
-        </div>
-      </div>
-
-      <a href="#" class="block px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200">Contacto</a>
     </div>
+
+    <div class="relative group">
+      <button (click)="toggleComiteEticaMobile()"
+        class="flex items-center justify-between w-full px-4 py-2 text-gray-200 hover:bg-[var(--primary-500)] hover:text-white transition-colors duration-200 rounded-md">
+        Comite de Etica
+        <svg class="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+          aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+            clip-rule="evenodd" />
+        </svg>
+      </button>
+      <div *ngIf="isComiteEticaMobileOpen" class="bg-[var(--custom-white)] rounded-md shadow-md mt-2 w-full">
+        <a *ngFor="let item of comiteEticaItems" [routerLink]="[item.link]"
+          class="block px-4 py-2 text-gray-700 hover:bg-[var(--primary-100)] hover:text-[var(--custom-white)] transition-colors duration-200 rounded-md">
+          {{ item.label }}
+        </a>
+      </div>
+    </div>
+
+    <!-- <a href="#" class="block px-4 py-2 text-gray-200 hover:bg-[var(--primary-500)] hover:text-white transition-colors duration-200 rounded-md">Contacto</a> -->
   </div>
+</div>
 </nav>

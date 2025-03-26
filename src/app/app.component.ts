@@ -15,6 +15,8 @@ import { NavbarComponent } from './modules/navbar/navbar.component';
 })
 export class AppComponent implements OnInit {
 
+  currentYear: number = new Date().getFullYear();
+
   constructor() {
 
   }

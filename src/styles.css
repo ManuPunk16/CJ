@@ -17,3 +17,7 @@
 
   --custom-white: #F8F8F8;
 }
+
+body {
+  background-color: var(--secondary-100);
+}
