@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "Noticia Nacional 1",
+    "imageUrl": "https://www-gstatic-com.translate.goog/webp/gallery/1.webp?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc",
+    "summary": "Resumen breve de la noticia nacional 1.",
+    "content": "Contenido completo de la noticia nacional 1. Aquí puedes incluir todos los detalles, párrafos, imágenes adicionales, etc. que quieras mostrar en la página de detalle de la noticia.",
+    "date": "2024-05-26"
+  },
+  {
+    "id": 2,
+    "title": "Noticia Nacional 2",
+    "imageUrl": "https://www-gstatic-com.translate.goog/webp/gallery/3.webp?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc",
+    "summary": "Resumen breve de la noticia nacional 2.",
+    "content": "Contenido completo de la noticia nacional 2. Aquí puedes incluir todos los detalles, párrafos, imágenes adicionales, etc. que quieras mostrar en la página de detalle de la noticia.",
+    "date": "2024-05-24"
+  }
+]

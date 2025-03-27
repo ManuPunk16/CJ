@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "public": "dist/cj/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "site": "consejeriacampeche",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

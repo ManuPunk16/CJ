@@ -1,0 +1,13 @@
+<div *ngIf="newsItem" class="container mx-auto px-4 py-8">
+  <div class="bg-white rounded-lg shadow-md p-8">
+    <h2 class="text-4xl font-bold mb-6 text-gray-900 leading-tight">{{ newsItem.title }}</h2>
+    <img [src]="newsItem.imageUrl" alt="{{ newsItem.title }}" class="w-full max-h-[600px] object-cover rounded-lg mb-6">
+    <div class="mb-4">
+      <p class="text-sm text-gray-600 mb-2">Publicado el: {{ newsItem.date | date:'dd/MM/yyyy' }}</p>
+      <p class="text-lg text-gray-800 leading-relaxed">{{ newsItem.content }}</p>
+    </div>
+  </div>
+</div>
+<div *ngIf="!newsItem" class="container mx-auto px-4 py-8">
+  <p class="text-red-600 font-semibold">Noticia no encontrada.</p>
+</div>
